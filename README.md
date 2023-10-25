@@ -1,4 +1,4 @@
-# Projeto de Conclusão da Disciplina "Big Data" do MBA em Data Science
+# Projeto de Conclusão da Disciplina "Big Data" do MBA em Data Science da Famesp em parceria com a FLAI
 <p align="right">Outubro/2023</p>
 
 ---
@@ -40,11 +40,11 @@
 
 Esta seção aborda a descrição do problema de negócio escolhido para desenvolver o projeto da disciplina "Big Data".
 
-**Tema**: Títulos IMDB: Análise de Avaliação pelo Público 
+**Tema**: Títulos IMDb: Análise da Avaliação pelo Público 
 
 **Objetivo**:  
 
-- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para conectar e tratar os dados, gerar as análises e responder às perguntas. 
+- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para conectar e tratar os dados, gerar as análises e responder às perguntas.
 
 **Problema de Negócio**: 
 
@@ -53,10 +53,11 @@ Esta seção aborda a descrição do problema de negócio escolhido para desenvo
 
 **Fontes de Dados**:
 
-- Foram utilizados dados de um conjunto de dados público localizado no site do IMDB. Os dados se referem a títulos de filmes, séries, documentários, vídeo games, entre outros, assim como dados de avaliação desses títulos. 
-- Segue link do IMDB: https://datasets.imdbws.com/ [^1]
+- Foram utilizados dados de um conjunto de dados público localizado no site do IMDb. Os dados se referem a títulos de filmes, séries, documentários, vídeo games, entre outros, assim como dados de avaliação desses títulos. 
+- Segue link do IMDb: https://datasets.imdbws.com/ [^1]
+- Detalhes desse conjunto de dados: Ele contém muitos conjuntos de dados diferentes, que incluem dados reais. Cada conjunto de dados está contido em um arquivo comprimido (gzip) com valores separados por tabulação (TSV) no formato UTF-8. A primeira linha de cada arquivo contém os cabeçalhos que descrevem o que há em cada coluna. '\N' é usado para indicar que um campo específico está ausente ou nulo.
 - O conjunto de dados em questão é formado pelos arquivos abaixo (OBS: a lista abaixo consta apenas os arquivos utilizados neste projeto): 
-  - title.basics.tsv.gz: dados básicos dos títulos disponibilizados
+  - title.basics.tsv.gz: dados dos títulos disponibilizados
   - title.ratings.tsv.gz: dados com avaliações por título
   - title.akas.tsv.gz: dados regionais de cada título 
 
@@ -95,7 +96,7 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 | N | Variável        | Tipo do dado | Descrição PT                                                    | Valores Permitidos                                                                                                                                                   |
 |:-:|-----------------|:------------:|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1 | titleId         |    String    | Identificador alfanumérico único do título                      | Não enumerado                                                                                                                                                        |
-| 2 | ordering        |    Inteiro   | Númeor que identifica unicamente as linhas para um dado titleId | Não enumerado                                                                                                                                                        |
+| 2 | ordering        |    Inteiro   | Número que identifica unicamente as linhas para um dado titleId | Não enumerado                                                                                                                                                        |
 | 3 | title           |    String    | Nome local do título                                            | Não enumerado                                                                                                                                                        |
 | 4 | region          |    String    | Região da versão do título                                      | Não enumerado                                                                                                                                                        |
 | 5 | language        |    String    | Idioma do título                                                | Não enumerado                                                                                                                                                        |
