@@ -40,26 +40,29 @@
 
 Esta seção aborda a descrição do problema de negócio escolhido para desenvolver o projeto da disciplina "Big Data".
 
-**Tema**: Títulos IMDb: Análise da Avaliação pelo Público 
+**Tema**: Títulos IMDb: Análise de Avaliação pelo Público e Sucesso do Título
 
 **Objetivo**:  
 
-- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para conectar e tratar os dados, gerar as análises e responder às perguntas.
+- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para tratar os dados, gerar as análises e responder às perguntas. 
 
 **Problema de Negócio**: 
 
-- A indústria de entretenimentos como filmes, séries, documentários, jogos, assim como qualquer empresa, precisa lidar com a satisfação ou não do seu público, principalmente para planejamento de projetos futuros e levantamento de orçamento, patrocinadores, entre outros. 
-- Pensando nisso, este projeto tem como intuito auxiliar nessa dor, não só de diretores, produtores, mas também de artistas de modo geral, que é entender e talvez prever a aceitação e satisfação do público em relação a uma produção, que normalmente requer um investimento na casa dos milhares de dólares. 
+- A indústria de entretenimentos como filmes, séries, documentários, jogos, assim como qualquer negócio, precisa lidar com a satisfação ou não do seu público, principalmente para planejamento de projetos futuros e levantamento de orçamento, patrocinadores, entre outros. 
+- O Internet Movie Database (IMDb), um dos sites mais acessados no mundo, abriga a maior coleção digital de metadados sobre filmes, séries de TV, documentários, vídeo games, entre outras produções. Semelhante à Wikipedia, o conteúdo do site do IMDb é atualizado por usuários não remunerados. Além de aceitar informações fornecidas pelos usuários, o IMDb também permite que os usuários expressem sua opinião sobre a qualidade dos títulos por meio de avaliações, cuja escala varia de 1 (péssimo) a 10 (o melhor).
+- Pensando nisso, este projeto tem como intuito auxiliar nessa dor, não só de diretores, produtores, escritores, mas também de artistas de modo geral, que é entender e talvez prever a aceitação e satisfação do público em relação a uma produção, que normalmente requer um investimento na casa dos milhares de dólares.
+
 
 **Fontes de Dados**:
 
 - Foram utilizados dados de um conjunto de dados público localizado no site do IMDb. Os dados se referem a títulos de filmes, séries, documentários, vídeo games, entre outros, assim como dados de avaliação desses títulos. 
 - Segue link do IMDb: https://datasets.imdbws.com/ [^1]
-- Detalhes desse conjunto de dados: Ele contém muitos conjuntos de dados diferentes, que incluem dados reais. Cada conjunto de dados está contido em um arquivo comprimido (gzip) com valores separados por tabulação (TSV) no formato UTF-8. A primeira linha de cada arquivo contém os cabeçalhos que descrevem o que há em cada coluna. '\N' é usado para indicar que um campo específico está ausente ou nulo.
-- O conjunto de dados em questão é formado pelos arquivos abaixo (OBS: a lista abaixo consta apenas os arquivos utilizados neste projeto): 
-  - title.basics.tsv.gz: dados dos títulos disponibilizados
-  - title.ratings.tsv.gz: dados com avaliações por título
+- Detalhes desse conjunto de dados: Ele contém muitos conjuntos de dados diferentes, que incluem dados reais. Cada conjunto de dados está contido em um arquivo comprimido (gzip) com valores separados por tabulação (TSV) no formato UTF-8. A primeira linha de cada arquivo contém cabeçalhos que descrevem o que há em cada coluna. '\N' é utilizado para indicar que um campo específico está ausente ou nulo.
+- O conjunto de dados em questão é formado pelos arquivos abaixo (OBS: a lista abaixo consta apenas os arquivos utilizados neste projeto):
+  - title.basics.tsv.gz: dados básicos dos títulos disponibilizados
+  - title.ratings.tsv.gz: dados com avaliações por título 
   - title.akas.tsv.gz: dados regionais de cada título 
+  - title.crew.tsv.gz: dados de diretores e escritores de cada titulo
 
 **Link do Notebook**: 
 
@@ -71,7 +74,7 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 
 **Descrição das variáveis com origem em: title.basics.tsv.gz**
 
-| N | Variável       | Tipo do dado | Descrição PT                                                            | Valores Permitidos                                                                                     |
+| N | Variável       | Tipo do dado | Descrição                                                               | Valores Permitidos                                                                                     |
 |:-:|----------------|:------------:|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | 1 | tconst         |    String    | Identificador alfanumérico único do título                              | Não enumerado                                                                                          |
 | 2 | titleType      |    String    | Tipo ou formato do título                                               | tvEpisode, movie, short, tvSeries, tvMovie, video, tvMiniSeries, videoGame, tvSpecial, tvShort         |
@@ -81,11 +84,11 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 | 6 | startYear      |    Inteiro   | Ano de lançamento do título. No caso de "TV Series", é o ano de estréia | Ano no formato de 4 dígitos                                                                            |
 | 7 | endYear        |    Inteiro   | Ano de conclusão da "TV Series"                                         | Para "TV Series", contém o ano de conclusão no formato de 4 dígitos. Para os demais tipos, contém '\N' |
 | 8 | runtimeMinutes |    Inteiro   | Duração do título (em minutos)                                          | Não enumerado                                                                                          |
-| 9 | genres         |     Array    | Gêneros associados ao título                                            | Não enumerado. Contém até 3 gêneros por título                                                         |
+| 9 | genres         |     Array    | Lista de Gênero(s) associado(s) ao título                               | Não enumerado. Contém até 3 gêneros por título                                                         |
 
 **Descrição das variáveis com origem em: title.ratings.tsv.gz**
 
-| N | Variável      | Tipo do dado | Descrição PT                                                    | Valores Permitidos |
+| N | Variável      | Tipo do dado | Descrição                                                       | Valores Permitidos |
 |:-:|---------------|:------------:|-----------------------------------------------------------------|--------------------|
 | 1 | tconst        |    String    | Identificados alfanumérico único do título                      | Não enumerado      |
 | 2 | averageRating |    Decimal   | Média ponderada de todas as avaliações individuais dos usuários | Não enumerado      |
@@ -93,7 +96,7 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 
 **Descrição das variáveis com origem em: title.akas.tsv.gz**
 
-| N | Variável        | Tipo do dado | Descrição PT                                                    | Valores Permitidos                                                                                                                                                   |
+| N | Variável        | Tipo do dado | Descrição                                                       | Valores Permitidos                                                                                                                                                   |
 |:-:|-----------------|:------------:|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1 | titleId         |    String    | Identificador alfanumérico único do título                      | Não enumerado                                                                                                                                                        |
 | 2 | ordering        |    Inteiro   | Número que identifica unicamente as linhas para um dado titleId | Não enumerado                                                                                                                                                        |
@@ -103,6 +106,14 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 | 6 | types           |     Array    | Conjunto enumerável de atributos alternativos para o título     | Algumas possibilidades: "alternative", "dvd", "festival", "tv", "video", "working", "original", "imdbDisplay". Novos itens podem ser adicionados no futuro sem aviso |
 | 7 | attributes      |     Array    | Termos adicionais para descrever o título de forma alternativa  | Não enumerado                                                                                                                                                        |
 | 8 | isOriginalTitle |   Booleano   | Indicador se o título é um título original                      | 0 - título não original; 1 - título original                                                                                                                         |
+
+**Descrição das variáveis com origem em: title.crew.tsv.gz**
+
+| N | Variável  | Tipo do dado | Descrição                                                                  | Valores Permitidos |
+|:-:|-----------|:------------:|----------------------------------------------------------------------------|--------------------|
+| 1 | tconst    |    String    | Identificados alfanumérico único do título                                 | Não enumerado      |
+| 2 | directors |     Array    | Lista de Diretor(es) associado(s) ao título (formado pela chave 'nconst')  | Não enumerado      |
+| 3 | writers   |     Array    | Lista de Escritor(es) associado(s) ao título (formado pela chave 'nconst') | Não enumerado      |
 
 ---
 
