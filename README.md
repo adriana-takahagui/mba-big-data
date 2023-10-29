@@ -40,7 +40,7 @@
 
 Esta seção aborda a descrição do problema de negócio escolhido para desenvolver o projeto da disciplina "Big Data".
 
-**Tema**: Títulos IMDb: Análise de Avaliação pelo Público e Sucesso do Título
+**Tema**: Títulos IMDb: Análise da Avaliação pelo Público e Sucesso do Título
 
 **Objetivo**:  
 
