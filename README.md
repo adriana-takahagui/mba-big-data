@@ -63,7 +63,7 @@ Esta seção aborda a descrição do problema de negócio escolhido para desenvo
   - title.akas.tsv.gz: dados regionais de cada título 
   - title.crew.tsv.gz: dados de diretores e escritores de cada título
 
-**Link do Notebook**: https://github.com/adriana-takahagui/mba-big-data/blob/main/Titulos_IMDb_Big_Data.ipynb
+**Link do Notebook**: [clique aqui](https://github.com/adriana-takahagui/mba-big-data/blob/main/Titulos_IMDb_Big_Data.ipynb)
 
 ---
 
