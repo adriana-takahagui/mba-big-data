@@ -63,7 +63,7 @@ Esta seção aborda a descrição do problema de negócio escolhido para desenvo
   - title.akas.tsv.gz: dados regionais de cada título 
   - title.crew.tsv.gz: dados de diretores e escritores de cada título
 
-**Link do Notebook**: 
+**Link do Notebook**: https://github.com/adriana-takahagui/mba-big-data/blob/main/Titulos_IMDb_Big_Data.ipynb
 
 ---
 
@@ -132,13 +132,13 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 **3. Preparação dos dados** <br/>
 **Como os dados foram tratados e preparados para a análise?**
 - Como o dataset do IMDb é formado por várias tabelas, para o problema proposto, foram utilizadas apenas 04 tabelas e estas foram unidas em uma única tabela para facilitar as análises, assim como foram tratadas conforme a necessidade das análises. 
-- Toda a preparação dos dados pode ser conferida no notebook, clicando aqui. 
+- Toda a preparação dos dados pode ser conferida no notebook, clicando [aqui](https://github.com/adriana-takahagui/mba-big-data/blob/main/Titulos_IMDb_Big_Data.ipynb). 
 
 **4. Análises e Conclusão** <br/>
 **Quais perguntas podem ser feitas para explorar os dados e responder o problema proposto? O que se pode concluir com as análises?**
 - As análises foram realizadas para entender as variáveis que possam influenciar a avaliação dada pelo usuário. 
 - Focou-se na análise do gênero, tipo do título (filme, série, ...), e criaram-se outras variáveis como quantidade de regiões, quantidade de gêneros, quantidade de diretores, quantidade de escritores e avaliou-se se eles influenciam ou não a nota dada a um título. 
-- Toda a análise exploratória pode ser conferida no notebook, assim como a conclusão das análises, clicando aqui. 
+- Toda a análise exploratória pode ser conferida no notebook, assim como a conclusão das análises, clicando [aqui](https://github.com/adriana-takahagui/mba-big-data/blob/main/Titulos_IMDb_Big_Data.ipynb). 
 
 ---
 
