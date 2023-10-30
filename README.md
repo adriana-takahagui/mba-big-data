@@ -44,14 +44,13 @@ Esta seção aborda a descrição do problema de negócio escolhido para desenvo
 
 **Objetivo**:  
 
-- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para tratar os dados, gerar as análises e responder às perguntas. 
+- O objetivo deste projeto é analisar a avaliação de um título, seja um filme, uma série, um documentário, ou um vídeo game para entender quais variáveis possam indicar o quão bem esse título está sendo recebido pelo público ou não. Tudo isso utilizando tecnologias de Big Data, no caso, foi utilizado o PySpark para tratar os dados, gerar as análises e responder às perguntas. 
 
 **Problema de Negócio**: 
 
 - A indústria de entretenimentos como filmes, séries, documentários, jogos, assim como qualquer negócio, precisa lidar com a satisfação ou não do seu público, principalmente para planejamento de projetos futuros e levantamento de orçamento, patrocinadores, entre outros. 
 - O Internet Movie Database (IMDb), um dos sites mais acessados no mundo, abriga a maior coleção digital de metadados sobre filmes, séries de TV, documentários, vídeo games, entre outras produções. Semelhante à Wikipedia, o conteúdo do site do IMDb é atualizado por usuários não remunerados. Além de aceitar informações fornecidas pelos usuários, o IMDb também permite que os usuários expressem sua opinião sobre a qualidade dos títulos por meio de avaliações, cuja escala varia de 1 (péssimo) a 10 (o melhor).
 - Pensando nisso, este projeto tem como intuito auxiliar nessa dor, não só de diretores, produtores, escritores, mas também de artistas de modo geral, que é entender e talvez prever a aceitação e satisfação do público em relação a uma produção, que normalmente requer um investimento na casa dos milhares de dólares.
-
 
 **Fontes de Dados**:
 
@@ -62,7 +61,7 @@ Esta seção aborda a descrição do problema de negócio escolhido para desenvo
   - title.basics.tsv.gz: dados básicos dos títulos disponibilizados
   - title.ratings.tsv.gz: dados com avaliações por título 
   - title.akas.tsv.gz: dados regionais de cada título 
-  - title.crew.tsv.gz: dados de diretores e escritores de cada titulo
+  - title.crew.tsv.gz: dados de diretores e escritores de cada título
 
 **Link do Notebook**: 
 
@@ -119,13 +118,35 @@ Esta seção descreve as tabelas e as variáveis utilizadas no projeto e no prob
 
 ## Metodologia de Desenvolvimento
 
+**1. Entendimento do negócio** <br/>
+**Qual a necessidade ou dor do negócio a ser explorada na análise?**
+- Como qualquer negócio, a indústria de entretenimento como a produção de filmes, séries de TV, documentários, vídeo games, entre outros, precisa realizar planejamentos de orçamento e uma das variáveis que pode ser explorada nesse contexto para ter uma ideia se uma produção em específico vai ser bem aceita pelo público ou não é a avaliação do próprio público. 
+- Portanto, o principal objetivo deste projeto é analisar quais variáveis influenciam a avaliação dada pelo usuário a um título, seja um filme, uma série de TV, ou qualquer produção disponível no IMDb como apresentado no item “Descrição do Problema de Negócio”. 
+
+**2. Entendimento dos dados** <br/>
+**Quais dados estão presentes / são necessários? Os dados estão disponíveis, preparados e tratados?**
+- Foram utilizados dados disponibilizados pelo IMDb através do link: https://developer.imdb.com/non-commercial-datasets/. 
+- Maiores informações foram apresentadas no item “Descrição do Problema de Negócio”. 
+- Os dados já estão previamente preparados para uso. 
+
+**3. Preparação dos dados** <br/>
+**Como os dados foram tratados e preparados para a análise?**
+- Como o dataset do IMDb é formado por várias tabelas, para o problema proposto, foram utilizadas apenas 04 tabelas e estas foram unidas em uma única tabela para facilitar as análises, assim como foram tratadas conforme a necessidade das análises. 
+- Toda a preparação dos dados pode ser conferida no notebook, clicando aqui. 
+
+**4. Análises e Conclusão** <br/>
+**Quais perguntas podem ser feitas para explorar os dados e responder o problema proposto? O que se pode concluir com as análises?**
+- As análises foram realizadas para entender as variáveis que possam influenciar a avaliação dada pelo usuário. 
+- Focou-se na análise do gênero, tipo do título (filme, série, ...), e criaram-se outras variáveis como quantidade de regiões, quantidade de gêneros, quantidade de diretores, quantidade de escritores e avaliou-se se eles influenciam ou não a nota dada a um título. 
+- Toda a análise exploratória pode ser conferida no notebook, assim como a conclusão das análises, clicando aqui. 
 
 ---
 
 ## Próximos Passos
 
 - Criar um modelo de Machine Learning para prever notas (avaliações) e classificar filmes, séries e outras produções de acordo com essas avaliações para auxiliar a planejar novos projetos e levantar orçamento.
-- Adicionar outros conjuntos de dados relacionados para explorar como as demais variáveis influenciam ou não as notas dadas pelo público.
+- Adicionar outros conjuntos de dados relacionados ao tema para explorar como as demais variáveis influenciam ou não as notas dadas pelo público.
+- Como por exemplo, dados de bilheteria. Entender a correlação entre o faturamento de uma produção como filmes e a avaliação dada pelo público. 
 
 ---
 
